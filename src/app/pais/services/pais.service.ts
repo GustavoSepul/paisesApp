@@ -9,7 +9,7 @@ import { Country } from '../interfaces/pais.interface';
 })
 export class PaisService {
 
-  private apiURL: string = 'https://restcountries.com/v3.1';
+  private apiURL: string = 'https://restcountries.com/v2';
 
   constructor( private http: HttpClient) { }
 
@@ -22,6 +22,14 @@ export class PaisService {
               //   catchError( err => of(['Hola Mundo']))
               // );
               // otra forma de manejar el error
+
+  }
+
+  buscarCapital( termino: string ): Observable<Country[]> {
+
+    const url = `${ this.apiURL }/capital/${ termino }`;
+
+    return this.http.get<Country[]>( url );
 
   }
 

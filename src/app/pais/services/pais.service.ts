@@ -33,4 +33,14 @@ export class PaisService {
 
   }
 
+  gatPaisPorAlpha( id: string ): Observable<Country> {
+
+    const url = `${ this.apiURL }/alpha/${ id }`;
+
+    return this.http.get<Country>( url );
+
+  }
+
+
+
 }
